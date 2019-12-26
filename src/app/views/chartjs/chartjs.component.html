@@ -1,0 +1,49 @@
+
+<div class="animated fadeIn">
+  <div class="card-columns cols-2">
+      <div class="card">
+          <div class="card-header">
+            Báo cáo doanh thu (theo ngày)
+            <div class="card-header-actions">
+              <a href="http://www.chartjs.org">
+                <small class="text-muted">docs</small>
+              </a>
+            </div>
+          </div>
+        <div class="card-body">
+          <div class="chart-wrapper">
+            <canvas baseChart class="chart"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+      </div>
+    <div class="card">
+      <div class="card-header">
+        Báo cáo sử dụng thuốc
+        <div class="card-header-actions">
+          <a href="http://www.chartjs.org">
+            <small class="text-muted">docs</small>
+          </a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart class="chart"
+          [datasets]="barChartData2"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

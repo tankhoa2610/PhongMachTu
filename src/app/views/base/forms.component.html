@@ -1,0 +1,138 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header">
+            <strong>Lập phiếu khám bệnh</strong>
+          </div>
+          <div class="card-body">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Họ tên bệnh nhân</label>
+                <div class="col-md-9">
+                  <input type="text" id="text-input" name="text-input" [(ngModel)]="Ten" class="form-control" placeholder="6-50 ký tự">
+                  <span class="help-block"></span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Số CMND</label>
+                <div class="col-md-9">
+                  <input type="text" id="text-input" name="text-input" [(ngModel)]="CMND" class="form-control" placeholder="">
+                  <span class="help-block"></span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Số điện thoại</label>
+                <div class="col-md-9">
+                  <input type="text" id="text-input" name="text-input" [(ngModel)]="SDT" class="form-control" placeholder="">
+                  <span class="help-block"></span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Địa chỉ</label>
+                <div class="col-md-9">
+                  <input type="text" id="text-input" name="text-input" [(ngModel)]="diaChi" class="form-control" placeholder="">
+                  <span class="help-block"></span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="date-input">Ngày khám</label>
+                <div class="col-md-9">
+                  <input class="form-control" id="date-input" type="date" [(ngModel)]="ngayKham" name="date-input" placeholder="date">
+                  <span class="help-block"></span>
+              </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="textarea-input">Triệu chứng bệnh</label>
+                <div class="col-md-9">
+                  <textarea id="textarea-input" name="textarea-input" rows="4" [(ngModel)]="trieuChung" class="form-control" placeholder="Content.."></textarea>
+              </div>
+              </div>
+              <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="textarea-input">Dự đoán bệnh</label>
+                  <div class="col-md-9">
+                    <textarea id="textarea-input" name="textarea-input" rows="4" [(ngModel)]="duDoan" class="form-control" placeholder="Content.."></textarea>
+                  </div>
+              </div>
+              <div class = "card">
+              <br/>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="select1">Tên thuốc</label>
+                <div class="col-md-9">
+                  <select id="select1" name="select1" class="form-control" [(ngModel)]="thuocGiaTien">
+                    <option *ngFor="let item of medicines | async" value= "{{ (item.tenThuoc | json) .slice(1,-1)}}_{{ (item.giaTien | json) .slice(1,-1)}}.">{{ (item.tenThuoc | json) .slice(1,-1)}}_{{ (item.giaTien | json) .slice(1,-1)}}.</option>
+                  </select>
+                  
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Lượng thuốc dùng</label>
+                <div class="col-md-9">
+                  <input type="text" id="text-input" name="text-input" [(ngModel)]="soLuongDung" class="form-control" placeholder="">
+                  <span class="help-block"></span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="select1">Cách dùng</label>
+                <div class="col-md-9">
+                  <select id="select1" name="select1" class="form-control" [(ngModel)]="cachDung">
+                    <option value="Cách 1">Cách 1</option>
+                    <option value="Cách 2">Cách 2</option>
+                    <option value="Cách 2">Cách 3</option>
+                    <option value="Cách 2">Cách 4</option>
+                  </select>
+                </div>
+              </div>
+              <br/>
+              <div class = "card-footer">
+                  <div style="display: flex; justify-content: flex-end">
+                    <button type="submit" class="btn btn-sm btn-primary" mat-raised-button (click)="onAdd()"><i class="fa fa-dot-circle-o"></i> Add</button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="select1">Giới tính</label>
+                <div class="col-md-9">
+                  <select id="select1" name="select1" class="form-control" [(ngModel)]="gioiTinh">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" >Bảo hiểm</label>
+                <div class="col-md-9 col-form-label">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" [(ngModel)]="baoHiem" name="radios" id="radio1" value="Có" checked>
+                    <label class="form-check-label" for="radio1">
+                      Có
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" [(ngModel)]="baoHiem" name="radios" id="radio2" value="Không">
+                    <label class="form-check-label" for="radio2">
+                      Không
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="file-input">Hình chụp (nếu có)</label>
+                <div class="col-md-9">
+                  <input type="file" id="file-input" name="file-input">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <div style="display: flex; justify-content: center">
+              <button type="submit" class="btn btn-sm btn-primary" mat-raised-button (click)="onSubmit()"><i class="fa fa-dot-circle-o"></i> Submit</button>
+              <button type="reset" class="btn btn-sm btn-danger" mat-raised-button (click)="onReset()"><i class="fa fa-ban"></i> Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/.row-->
+  </div>
+  
